@@ -15,22 +15,13 @@ import { Content, Footer } from 'antd/es/layout/layout';
 
 function ReportLayout() {
 
-  const {
-    token: { colorBgContainer, borderRadiusLG },
-  } = theme.useToken();
-
   return (
     <Layout>
       <Sider>
         <Navbar />
       </Sider>
       <Content style={{ margin: '24px 16px', }}>
-        <div style={{ padding: 24, minHeight: 360, background: colorBgContainer, borderRadius: borderRadiusLG, }}>
-          <Outlet />
-        </div>
-        <Footer style={{ textAlign: 'center', }}>
-          PTT RAiSE Report Central created by S.Supachok
-        </Footer>
+        <Outlet />
       </Content>
     </Layout>
   )

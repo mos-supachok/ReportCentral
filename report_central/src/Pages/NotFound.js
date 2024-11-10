@@ -1,10 +1,4 @@
 import React from 'react';
-
-function NotFound() {
-
-    return (
-        <h1>Not found.</h1>
-    );
-}
-
-export default NotFound;
+import { Empty } from 'antd';
+const App = () => <Empty />;
+export default App;

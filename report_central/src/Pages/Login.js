@@ -22,7 +22,7 @@ function Login() {
           <Flex style={{ height: '100vh' }} justify="center" align="center" >
             <Card hoverable style={{ width: '100%' }}>
               <Flex vertical justify='center' align='center' >
-                <Image src={logo} width='250px' />
+                <Image preview={false} src={logo} width='250px' />
                 <h1>Report Central</h1>
                 <p>An application to create the report.</p>
                 <Form

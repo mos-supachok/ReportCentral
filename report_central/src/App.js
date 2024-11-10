@@ -2,6 +2,7 @@ import Navbar from './Components/Navbar'
 import "./App.css";
 import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import { Flex, Layout, theme, } from 'antd';
+import Profile from "./Pages/Profile";
 import Home from "./Pages/Home";
 import MoM_history from "./Pages/MoM_history";
 import MoM_create from "./Pages/MoM_create";
@@ -27,10 +28,11 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<NoLayout />}>
-        <Route index element={<Login />}></Route>
         <Route path="*" element={<NotFound />} />
+        <Route index element={<Login />}></Route>
       </Route>
       <Route path='/report' element={<ReportLayout />}>
+        <Route path='/report/profile' element={<Profile />} />
         <Route path='/report/home' element={<Home />} />
         <Route path='/report/mom_history' element={<MoM_history />} />
         <Route path='/report/mom_create' element={<MoM_create />} />

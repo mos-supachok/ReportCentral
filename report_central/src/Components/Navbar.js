@@ -6,6 +6,17 @@ import logo from './image/PTT_RAISE_logo.png';
 import user_picture from './image/user_picture.png';
 
 const { Sider } = Layout;
+const siderStyle = {
+  overflow: 'visible',
+  height: '100vh',
+  position: 'fixed',
+  insetInlineStart: 0,
+  top: 0,
+  bottom: 0,
+  scrollbarWidth: 'thin',
+  scrollbarGutter: 'stable',
+};
+
 function getItem(label, key, icon, children) {
   return {
     key,
@@ -26,16 +37,12 @@ const menu = (
 
 const items = [
   getItem(<Link to='/report/home'>Home</Link>, '1', <HomeOutlined />),
-  getItem('MoM', 'sub1', <FileOutlined />, [
-    getItem(<Link to='/report/mom_history'>History</Link>, '2'),
-    getItem(<Link to='/report/mom_create'>Create</Link>, '3'),
+  getItem('Report', 'sub1', <FileOutlined />, [
+    getItem(<Link to='/report/history'>History</Link>, '2'),
+    getItem(<Link to='/report/create'>Create</Link>, '3'),
   ]),
-  getItem('General report', 'sub2', <FileOutlined />, [
-    getItem(<Link to='/report/gp_history'>History</Link>, '4'),
-    getItem(<Link to='/report/gp_create'>Create</Link>, '5'),
-  ]),
-  getItem(<Link to='/report/users'>Users</Link>, '6', <UserOutlined />,),
-  getItem(<Link to='/report/help'>Help</Link>, '7', <AlertOutlined />,),
+  getItem(<Link to='/report/users'>Users</Link>, '4', <UserOutlined />,),
+  getItem(<Link to='/report/help'>Help</Link>, '5', <AlertOutlined />,),
 ];
 
 function Navbar() {
@@ -46,12 +53,12 @@ function Navbar() {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible={false} collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+    <Layout hasSider style={{ minHeight: '100vh' }}>
+      <Sider style={siderStyle}>
         <Image preview={false} src={logo} width='100%' style={{ backgroundColor: '#44546A' }} />
         <h1 style={{ textAlign: 'center', color: '#FFFFFF' }}>Report Central</h1>
         <Flex vertical align='center' sstyle={{ padding: '0px 0px 10px 0px' }}>
-          <Avatar size={64} icon={<UserOutlined />} />
+          <Image preview={true} src={user_picture} width='60%'></Image>
           <Dropdown overlay={menu}>
             <a style={{ width: '80%', margin: '20px', textAlign: 'center' }} onClick={(e) => e.preventDefault()}>
               <Space style={{ fontSize: '1rem', color: '#FFFFFF' }}>{Username}<DownOutlined /></Space>

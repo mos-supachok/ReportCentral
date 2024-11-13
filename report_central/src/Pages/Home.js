@@ -1,5 +1,5 @@
 import React from 'react';
-import { Space, theme, Card, Col, Row, Table } from 'antd';
+import { Space, Card, Col, Row, Table } from 'antd';
 
 function Home() {
 
@@ -35,11 +35,13 @@ function Home() {
       title: 'Date',
       dataIndex: 'date',
       key: 'date',
+      width: '20%',
     },
     {
       title: 'Time',
       dataIndex: 'time',
       key: 'time',
+      width: '15%',
     },
     {
       title: 'Name',
@@ -55,6 +57,7 @@ function Home() {
       title: 'Detail',
       dataIndex: 'link',
       key: 'link',
+      width: '15%'
     },
   ];
 
@@ -63,17 +66,17 @@ function Home() {
       <div className="site-card-wrapper">
         <Row gutter={16}>
           <Col span={8}>
-            <Card title="All report" size="medium">
+            <Card title="My report" size="medium">
               x,xxx
             </Card>
           </Col>
           <Col span={8}>
-            <Card title="All MoM" size="medium">
+            <Card title="My MoM" size="medium">
               x,xxx
             </Card>
           </Col>
           <Col span={8}>
-            <Card title="All general report" size="medium">
+            <Card title="My general report" size="medium">
               x,xxx
             </Card>
           </Col>
@@ -82,10 +85,10 @@ function Home() {
 
       <Space direction="vertical" size="middle" style={{ display: 'flex', paddingTop: '20px' }}>
         <Card title="MoM – Minute of meeting" size="medium">
-          <Table dataSource={dataSource} columns={columns} />
+          <Table dataSource={dataSource} columns={columns} pagination={false} />
         </Card>
         <Card title="General report" size="medium">
-          <Table dataSource={dataSource} columns={columns} />
+          <Table dataSource={dataSource} columns={columns} pagination={false} />
         </Card>
       </Space>
 

@@ -4,10 +4,8 @@ import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import { Flex, Layout, theme, } from 'antd';
 import Profile from "./Pages/Profile";
 import Home from "./Pages/Home";
-import MoM_history from "./Pages/MoM_history";
-import MoM_create from "./Pages/MoM_create";
-import GP_history from "./Pages/GP_history";
-import GP_create from "./Pages/GP_create";
+import History from "./Pages/History";
+import Create from "./Pages/Create";
 import Users from "./Pages/Users";
 import Help from "./Pages/Help";
 import Sider from 'antd/es/layout/Sider';
@@ -34,10 +32,8 @@ function App() {
       <Route path='/report' element={<ReportLayout />}>
         <Route path='/report/profile' element={<Profile />} />
         <Route path='/report/home' element={<Home />} />
-        <Route path='/report/mom_history' element={<MoM_history />} />
-        <Route path='/report/mom_create' element={<MoM_create />} />
-        <Route path='/report/gp_history' element={<GP_history />} />
-        <Route path='/report/gp_create' element={<GP_create />} />
+        <Route path='/report/history' element={<History />} />
+        <Route path='/report/create' element={<Create />} />
         <Route path='/report/users' element={<Users />} />
         <Route path='/report/help' element={<Help />} />
         <Route index path="*" element={<NotFound />} />

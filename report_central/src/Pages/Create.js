@@ -8,13 +8,13 @@ const layout = {
     span: 4,
   },
   wrapperCol: {
-    span: 12,
+    span: 20,
   },
 };
 const tailLayout = {
   wrapperCol: {
     offset: 4,
-    span: 12,
+    span: 20,
   },
 };
 
@@ -38,6 +38,11 @@ function Create() {
   const onReset = () => {
     form.resetFields();
   };
+  const onChange_reporttype = (e) => {
+    const value = (e.target.value == 'mom') ? (false) : (true);
+    console.log(value)
+    return (value);
+  }
   return (
     <div>
       <Space direction="vertical" size="middle" style={{ display: 'flex', }}>
@@ -54,13 +59,36 @@ function Create() {
                   options={reportType}
                   optionType="button"
                   buttonStyle="solid"
+                  onChange={onChange_reporttype}
                 />
               </Form.Item>
-              <Form.Item name="topic" label="Topic" rules={[{ required: true, },]}>
+              <Form.Item name="topic" label="Topic">
                 <Input />
               </Form.Item>
               <Form.Item name="date" label="Date" rules={[{ required: true, },]}>
                 <DatePicker />
+              </Form.Item>
+              <Form.Item name="location" label="Location">
+                <Input />
+              </Form.Item>
+              <Form.Item name="project" label="Project" rules={[{ required: { onChange_reporttype }, },]}>
+                <Select
+                  disabled={onChange_reporttype}
+                  options={[
+                    { value: 'project_a', label: 'Project A' },
+                    { value: 'project_b', label: 'Project B' },
+                    { value: 'project_c', label: 'Project C' },
+                    { value: 'project_D', label: 'Project D' },
+                  ]} />
+              </Form.Item>
+              <Form.Item name="intro" label="Intro">
+                <Input.TextArea />
+              </Form.Item>
+              <Form.Item name="description" label="Description">
+                <Input.TextArea rows={6} />
+              </Form.Item>
+              <Form.Item name="nextstep" label="Next step">
+                <Input.TextArea disabled={onChange_reporttype} />
               </Form.Item>
 
 

@@ -6,49 +6,62 @@ const { Meta } = Card;
 const dataSource = [
   {
     key: '1',
-    name: 'Mike',
-    date: 'xx/xx/xxxx',
-    time: 'xx:xx',
-    topic: 'Project A',
-    link: 'link',
+    name: 'Mike Wazowski',
+    usercode: '00000',
+    username: 'mike',
+    password: 'mike00',
+    permission: 'User',
+    department: 'Engineering',
   },
 ];
 
 const columns = [
   {
-    title: 'Date',
-    dataIndex: 'date',
-    key: 'date',
-    width: '20%',
-  },
-  {
-    title: 'Time',
-    dataIndex: 'time',
-    key: 'time',
-    width: '15%',
+    title: 'User code',
+    dataIndex: 'usercode',
+    key: 'usercode',
   },
   {
     title: 'Name',
     dataIndex: 'name',
     key: 'name',
+    width: '40%'
   },
   {
-    title: 'Topic',
-    dataIndex: 'topic',
-    key: 'topic',
+    title: 'Username',
+    dataIndex: 'username',
+    key: 'username',
   },
   {
-    title: 'Detail',
-    dataIndex: 'link',
-    key: 'link',
-    width: '15%'
+    title: 'Password',
+    dataIndex: 'password',
+    key: 'password',
+  },
+  {
+    title: 'Permission',
+    dataIndex: 'permission',
+    key: 'permission',
+  },
+  {
+    title: 'Department',
+    dataIndex: 'department',
+    key: 'department',
   },
 ];
 
 function Users() {
 
   return (
-    <h1>Users</h1>
+    <div>
+      <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+        <Card>
+          <Meta title="Users" description="User management" />
+          <div>
+            <Table dataSource={dataSource} columns={columns} style={{ marginTop: '20px' }} />
+          </div>
+        </Card>
+      </Space>
+    </div>
   );
 }
 

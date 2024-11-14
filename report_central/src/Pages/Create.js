@@ -5,10 +5,10 @@ const { Meta } = Card;
 const { Option } = Select;
 const layout = {
   labelCol: {
-    span: 4,
+    span: 3,
   },
   wrapperCol: {
-    span: 20,
+    span: 21,
   },
 };
 const tailLayout = {

@@ -14,6 +14,7 @@ import ReportLayout from './Layout/ReportLayout';
 import NotFound from './Pages/NotFound';
 import NoLayout from './Layout/LoginLayout';
 import Login from './Pages/Login';
+import ReportDetail from './Pages/ReportDetail';
 
 const { Content, Footer } = Layout;
 

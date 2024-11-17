@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { InboxOutlined } from '@ant-design/icons';
 import { Space, Card, Button, Form, Input, Select, Radio, DatePicker, message, Upload, } from 'antd';
+import axios from 'axios';
 
 const { Meta } = Card;
 const { Option } = Select;
@@ -31,33 +32,54 @@ const reportType = [
   },
 ];
 
-const props = {
-  name: 'file',
-  multiple: true,
-  action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== 'uploading') {
-      console.log(info.file, info.fileList);
-    }
-    if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log('Dropped files', e.dataTransfer.files);
-  },
-};
-
 function Create() {
 
   const [statRT, setStatRT] = useState(true);
+  const [files, setFiles] = useState([]);
+
+  const props = {
+    name: 'file',
+    multiple: true,
+    customRequest: async ({ file, onSuccess }) => {
+      setTimeout(() => {
+        onSuccess("ok");
+      }, 0);
+    },
+    // action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    onChange(info) {
+      const { status } = info.file;
+      // if (status !== 'uploading') {
+      //   console.log(info.file, info.fileList);
+      // }
+      // if (status === 'done') {
+      //   message.success(`${info.file.name} file uploaded successfully.`);
+      // } else if (status === 'error') {
+      //   message.error(`${info.file.name} file upload failed.`);
+      // }
+      if (status === 'done') {
+        message.success(`${info.file.name} added.`)
+      } else if (status === 'removed') {
+        message.info(`${info.file.name} removed.`)
+      }
+      console.log(info.fileList)
+      setFiles(info.fileList)
+    },
+    onDrop(e) {
+      console.log('Dropped files', e.dataTransfer.files);
+    },
+  };
 
   const [form] = Form.useForm();
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+
+
+    // remap files
+    delete values.file
+    values['files'] = files.map(f => f.originFileObj)
+
+    console.log(values)
+
+    await axios.postForm("http://localhost:8000/report/", values);
   };
 
   const reportType_onChange = (e) => {
@@ -75,7 +97,7 @@ function Create() {
               onFinish={onFinish}
               style={{ margin: '20px' }}
             >
-              <Form.Item name="reportype" label="Repor type" rules={[{ required: true, },]}>
+              <Form.Item name="reporttype" label="Report type" rules={[{ required: true, },]}>
                 <Radio.Group
                   block
                   options={reportType}

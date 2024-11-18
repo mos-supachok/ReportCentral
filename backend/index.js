@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use('/report', reportRoutes)
 
 db.sequelize.sync().then(() => {
-	app.listen(8000, () => {
-		console.log('Server is running at port 8000');
-	});
+  app.listen(8000, () => {
+    console.log('Server is running at port 8000');
+  });
 })

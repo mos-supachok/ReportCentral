@@ -11,7 +11,7 @@ const createReport = async (req, res) => {
 	// console.log(req.files)
 	// console.log(req.body)
 
-	fileList = req.files
+	const fileList = req.files
 
 	// add fileList as a key and values as base64
 	body['files'] = []

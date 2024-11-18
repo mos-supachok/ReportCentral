@@ -72,14 +72,27 @@ function Create() {
   const [form] = Form.useForm();
   const onFinish = async (values) => {
 
+    // values = {
+    //   reporttype: "...",
+    //   file: {
+    //     file: [{
+    //       ...
+    //       originFileObj: File[]
+    //     }]
+    //   }
+    // }
+    // values.file.file.originFileObj
 
     // remap files
     delete values.file
     values['files'] = files.map(f => f.originFileObj)
 
-    console.log(values)
-
-    await axios.postForm("http://localhost:8000/report/", values);
+    const response = await axios.postForm("http://localhost:8000/report/", values);
+    if (response.status === 201) {
+      message.success("Submitted")
+      form.resetFields();
+      setFiles([])
+    }
   };
 
   const reportType_onChange = (e) => {

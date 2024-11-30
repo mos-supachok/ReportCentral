@@ -1,7 +1,7 @@
 import React from 'react';
-import { Flex, Button, Form, Input, Card, Row, Col, Image } from "antd";
+import { Flex, Button, Form, Input, Card, Row, Col, Image, } from "antd";
 import logo from '../Components/image/PTT_RAISE_logo.png';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Login() {
@@ -25,6 +25,7 @@ function Login() {
                 <Image preview={false} src={logo} width='250px' />
                 <h1>Report Central</h1>
                 <p>An application to create the report.</p>
+                <h3>Login</h3>
                 <Form
                   name="basic"
                   labelCol={{
@@ -78,14 +79,18 @@ function Login() {
                     <Button type="primary" htmlType="submit">
                       Login
                     </Button>
+                    <Button color="primary" variant="link" style={{ padding: '0px 0px 0px 30px' }}>
+                      <Link to='/register'>Register</Link>
+                    </Button>
                   </Form.Item>
                 </Form>
+
               </Flex>
             </Card>
           </Flex >
         </Col>
       </Row >
-    </div>
+    </div >
   );
 }
 

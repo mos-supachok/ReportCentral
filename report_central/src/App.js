@@ -20,7 +20,7 @@ function App() {
       <Route path="/" element={<NoLayout />}>
         <Route path="*" element={<NotFound />} />
         <Route index element={<Login />}></Route>
-        <Route path='/report/register' element={<Register />} />
+        <Route path='/register' element={<Register />} />
       </Route>
       <Route path='/report' element={<ReportLayout />}>
         <Route path='/report/profile' element={<Profile />} />

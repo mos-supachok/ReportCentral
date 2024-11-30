@@ -34,7 +34,6 @@ const menu = (
   </Menu>
 );
 
-
 const items = [
   getItem(<Link to='/report/home'>Home</Link>, '1', <HomeOutlined />),
   getItem('Report', 'sub1', <FileOutlined />, [
@@ -51,6 +50,7 @@ function Navbar() {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   const [collapsed, setCollapsed] = useState(false);
+  const [selected, setSelected] = useState([]);
 
   return (
     <Layout hasSider style={{ minHeight: '100vh' }}>

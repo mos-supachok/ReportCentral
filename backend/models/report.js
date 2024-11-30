@@ -12,8 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'reports',
     timestamps: true,
   });
+
   reportModel.associate = (db => {
     reportModel.hasMany(db.ReportFile, { as: 'files' })
   })
+
+  reportModel.associate = models => {
+    reportModel.belongsTo(models.User, { foreignKey: 'user_id' })
+  }
+
   return reportModel;
 }

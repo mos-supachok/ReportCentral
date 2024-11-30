@@ -3,7 +3,7 @@ import "../App.css";
 import { Outlet } from 'react-router-dom'
 import { Layout, } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { Content, Footer } from 'antd/es/layout/layout';
+import { Content, } from 'antd/es/layout/layout';
 
 
 function ReportLayout() {

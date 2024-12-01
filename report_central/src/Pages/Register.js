@@ -1,17 +1,27 @@
 import React from 'react';
-import { Flex, Button, Form, Input, Card, Row, Col, Image, } from "antd";
+import { Flex, Button, Form, Input, Card, Row, Col, Image, message } from "antd";
 import logo from '../Components/image/PTT_RAISE_logo.png';
 import { useNavigate, Link } from "react-router-dom";
+import axios from 'axios'
 
 const { Meta } = Card;
 
 export default function Register() {
 
+  const [form] = Form.useForm();
+
   const navigate = useNavigate();
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     console.log("Success:", values);
-    navigate("/report/home");
+
+    const response = await axios.post("http://localhost:8000/users/register", values);
+    if (response.status === 201) {
+      message.success("Submitted, Please wait for admin approve")
+      form.resetFields();
+      navigate("/");
+    }
+
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -29,10 +39,11 @@ export default function Register() {
                 <p>An application to create the report.</p>
                 <h3>Register</h3>
                 <Form
+                  form={form}
                   name="basic"
                   labelCol={{ span: 6, }} wrapperCol={{ span: 18, }}
                   style={{
-                    border: '1px solid red',
+                    width: '100%', padding: 10,
                   }}
                   initialValues={{
                     remember: true,
@@ -62,6 +73,19 @@ export default function Register() {
                       {
                         required: true,
                         message: "Please input your last name!",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+
+                  <Form.Item
+                    label="Employee ID"
+                    name="employee_id"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your employee ID!",
                       },
                     ]}
                   >

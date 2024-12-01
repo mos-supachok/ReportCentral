@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-function NoLayout() {
+function LoginLayout() {
   return (
     <>
       <Outlet />
@@ -8,4 +8,4 @@ function NoLayout() {
   )
 }
 
-export default NoLayout
+export default LoginLayout
